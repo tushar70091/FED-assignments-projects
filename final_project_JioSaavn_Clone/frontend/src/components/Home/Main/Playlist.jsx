@@ -38,20 +38,20 @@ const Playlist = () => {
                     <img src={playlist.cover_image} alt="" className='w-[250px] max-w-24 lg:max-w-none rounded-xl' draggable="false" />
                 </div>
                 <div className='flex flex-col'>
-                    <div className='text-4xl font-semibold'>{playlist.name}</div>
-                    <div className='text-xl'>By {playlist.artist}. {playlist.songs.length} Songs</div>
+                    <div className='text-4xl text-[var(--text)] font-semibold'>{playlist.name}</div>
+                    <div className='text-xl text-[var(--textSoft)]'>By {playlist.artist}. {playlist.songs.length} Songs</div>
                 </div>
             </div>
             <div className='mt-7 overflow-scroll h-auto pb-32 w-full'>
                 {playlist.songs.map((song, index) => {
                     return (
-                        <div key={index} className={`flex py-2 justify-between hover:bg-white px-4 w-full ${(songnumber === index && currentAudio===playlist.songs) ? "text-[rgb(57,190,170)] font-semibold" : ""}`} onClick={() => { setCurrentAudio(playlist.songs); setIsplaying(true); setCurrentsong(song.song_name); setCurrentPlaylist(playlist); setSongnumber(index) }}>
+                        <div key={index} className={`flex py-2 justify-between hover:bg-[var(--bg2)] px-4 w-full ${(songnumber === index && currentAudio===playlist.songs) ? "text-[rgb(57,190,170)] font-semibold" : ""}`} onClick={() => { setCurrentAudio(playlist.songs); setIsplaying(true); setCurrentsong(song.song_name); setCurrentPlaylist(playlist); setSongnumber(index) }}>
                             <div className='flex gap-8 w-1/2'>
-                                <div>{index + 1}</div>
-                                <div>{song.song_name}</div>
+                                <div className='text-[var(--text)]'>{index + 1}</div>
+                                <div className='text-[var(--text)]'>{song.song_name}</div>
                             </div>
-                            <div className=' w-1/2'>{playlist.artist}</div>
-                            <div className=' w-1/2'>{formatTime(Number(song.totalTime))}</div>
+                            <div className='text-[var(--text)] w-1/2'>{playlist.artist}</div>
+                            <div className='text-[var(--text)] w-1/2'>{formatTime(Number(song.totalTime))}</div>
                         </div>
                     )
                 })}

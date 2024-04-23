@@ -1,0 +1,25 @@
+:root {
+    --bg: rgb(246, 246, 246);
+    --text: black;
+    --bg2: white;
+    --bgSoft: #f7f7f7;
+    --textSoft: gray;
+    --border: lightgray;
+    --filter: invert(0);
+    --filter2: invert(1);
+}
+
+[data-theme="dark"] {
+    --bg: rgb(20, 20, 20);
+    --bg2: black;
+    --text: white;
+    --bgSoft: whitesmoke;
+    --textSoft: lightgray;
+    --border: #444;
+    --filter: invert(1);
+    --filter2: invert(0);
+}
+
+* {
+    transition: all 0.05s ease-in-out;
+}

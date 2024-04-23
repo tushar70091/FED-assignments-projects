@@ -18,10 +18,11 @@ function App() {
   const [currentPlaylist, setCurrentPlaylist] = useState("")
   const [isplaying, setIsplaying] = useState(false)
   const [songnumber, setSongnumber] = useState(0)
+  const [searchquery, setSearchquery] = useState("")
 
   return (
     <>
-      <MusicContext.Provider value={{ currentAudio, setCurrentAudio, currentPlaylist, setCurrentPlaylist, isplaying, setIsplaying, currentsong, setCurrentsong, songnumber, setSongnumber }}>
+      <MusicContext.Provider value={{ currentAudio, setCurrentAudio, currentPlaylist, setCurrentPlaylist, isplaying, setIsplaying, currentsong, setCurrentsong, songnumber, setSongnumber, searchquery, setSearchquery }}>
         <BrowserRouter>
           <Routes>
             <Route exact path='/' element={<Home />}>

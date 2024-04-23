@@ -6,7 +6,6 @@ import { PiShuffleBold } from 'react-icons/pi';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import { HiSpeakerWave } from 'react-icons/hi2';
 import { HiSpeakerXMark } from "react-icons/hi2";
-import { LuHardDriveDownload } from 'react-icons/lu';
 import VolumeController from './VolumeController';
 import MusicContext from '../../../context/MusicContext';
 
@@ -87,7 +86,7 @@ const Player = () => {
     return (
         <>
             <audio src={currentAudio[songnumber]?.audio} controls autoPlay hidden={true} ref={myaudio} onEnded={handleEnded} />
-            <div className='fixed bottom-0 left-0 right-0 flex flex-col z-10 bg-[rgb(246,246,246)]'>
+            <div className='fixed h-[101px] bottom-0 left-0 right-0 flex flex-col z-10 bg-[var(--bg)]'>
                 <input
                     type="range"
                     name="progress"
@@ -111,29 +110,29 @@ const Player = () => {
                     <div className='flex justify-start items-center gap-3 lg:w-[30vw]'>
                         <img src={currentPlaylist.cover_image} alt="" width={55} className='rounded-lg' draggable="false" />
                         <div className='hidden lg:block'>
-                            <span>{currentAudio[songnumber]?.song_name}</span>
-                            <p className='text-xs text-gray-500'>{currentPlaylist.artist}</p>
+                            <span className='text-[var(--textSoft)]'>{currentAudio[songnumber]?.song_name}</span>
+                            <p className='text-xs text-[var(--textSoft)]'>{currentPlaylist.artist}</p>
                         </div>
                     </div>
                     <div className='flex text-2xl lg:text-3xl gap-4 lg:gap-6 lg:w-[40vw] justify-center items-center'>
                         {(repeatStatus == "off") ?
-                            <BsRepeat className='text-gray-400 text-2xl cursor-pointer' onClick={() => { setRepeatStatus("all") }} />
+                            <BsRepeat className='text-[var(--textSoft)] text-2xl cursor-pointer' onClick={() => { setRepeatStatus("all") }} />
                             :
                             (repeatStatus == "all") ?
                                 <BsRepeat className='text-cyan-400 text-2xl cursor-pointer' onClick={() => { setRepeatStatus("current") }} />
                                 :
                                 <BsRepeat1 className='text-cyan-400 text-2xl cursor-pointer' onClick={() => { setRepeatStatus("off") }} />
                         }
-                        <IoMdSkipBackward className='text-gray-700 hover:text-gray-500 cursor-pointer' onClick={() => {
+                        <IoMdSkipBackward className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer' onClick={() => {
                             if (songnumber !== 0)
                                 setSongnumber(songnumber - 1)
                         }} />
                         {isplaying ? (
-                            <FaPause className='text-gray-700 hover:text-gray-500 cursor-pointer' onClick={() => { myaudio.current.pause(); setIsplaying(!isplaying); }} />
+                            <FaPause className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer' onClick={() => { myaudio.current.pause(); setIsplaying(!isplaying); }} />
                         ) : (
-                            <FaPlay className='text-gray-700 hover:text-gray-500 cursor-pointer' onClick={() => { myaudio.current.play(); setIsplaying(!isplaying); }} />
+                            <FaPlay className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer' onClick={() => { myaudio.current.play(); setIsplaying(!isplaying); }} />
                         )}
-                        <IoMdSkipForward className='text-gray-700 hover:text-gray-500 cursor-pointer' onClick={() => {
+                        <IoMdSkipForward className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer' onClick={() => {
                             if (repeatStatus == "off") {
                                 if (songnumber !== currentAudio.length - 1)
                                     setSongnumber(songnumber + 1)
@@ -142,7 +141,7 @@ const Player = () => {
                                 handleEnded()
                         }} />
                         {(shuffleStatus == "off") ?
-                            <PiShuffleBold className='text-gray-400 text-2xl cursor-pointer' onClick={() => { setShuffleStatus("on") }} />
+                            <PiShuffleBold className='text-[var(--textSoft)] text-2xl cursor-pointer' onClick={() => { setShuffleStatus("on") }} />
                             :
                             <PiShuffleBold className='text-cyan-400 text-2xl cursor-pointer' onClick={() => { setShuffleStatus("off") }} />
                         }
@@ -152,12 +151,12 @@ const Player = () => {
                             <HiSpeakerXMark onClick={() => {
                                 setVolume(50)
                                 toggleMute()
-                            }} className='text-gray-700 hover:text-gray-500 cursor-pointer text-2xl lg:text-3xl hidden lg:block' onMouseEnter={() => setShowVolume(true)} onMouseLeave={() => setShowVolume(false)} />
+                            }} className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer text-2xl lg:text-3xl hidden lg:block' onMouseEnter={() => setShowVolume(true)} onMouseLeave={() => setShowVolume(false)} />
                             :
                             <HiSpeakerWave onClick={() => {
                                 setVolume(0)
                                 toggleMute()
-                            }} className='text-gray-700 hover:text-gray-500 cursor-pointer text-2xl lg:text-3xl hidden lg:block' onMouseEnter={() => setShowVolume(true)} onMouseLeave={() => setShowVolume(false)} />
+                            }} className='text-[var(--text)] hover:text-[var(--textSoft)] cursor-pointer text-2xl lg:text-3xl hidden lg:block' onMouseEnter={() => setShowVolume(true)} onMouseLeave={() => setShowVolume(false)} />
                         }
                         <VolumeController setIsMuted={setIsMuted} showVolume={showVolume} setShowVolume={setShowVolume} volume={volume} setVolume={setVolume} />
                     </div>
